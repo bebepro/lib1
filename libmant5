@@ -42,7 +42,7 @@ TextLabel_2.TextWrapped = true
 TextLabel_2.TextTransparency = 1 -- Initially transparent
 
 -- Function to tween transparency
-local function showLibrary()
+local function showDisableLibrary()
     ScreenGui.Enabled = true
     
     -- Fade in the Frame
