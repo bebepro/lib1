@@ -40,7 +40,7 @@ TextLabel_2.TextSize = 18
 TextLabel_2.TextWrapped = true
 
 -- Function to tween transparency
-local function showLibrary()
+local function showDisableLibrary()
     ScreenGui.Enabled = true
     
     local tweenInfo = TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
