@@ -56,3 +56,5 @@ local function showDisableLibrary()
     
     ScreenGui.Enabled = false
 end
+
+return showLibrary
