@@ -28,32 +28,53 @@ TextLabel.Font = Enum.Font.SourceSansBold
 TextLabel.Text = "Desync"
 TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel.TextSize = 26
+TextLabel.TextTransparency = 1 -- Initially transparent
 
 TextLabel_2.Parent = Frame
 TextLabel_2.BackgroundTransparency = 1
 TextLabel_2.Position = UDim2.new(0.272, 0, 0.514, 0)
 TextLabel_2.Size = UDim2.new(0, 54, 0, 25)
 TextLabel_2.Font = Enum.Font.SourceSans
-TextLabel_2.Text = "Disabled"
+TextLabel_2.Text = "Enabled"
 TextLabel_2.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel_2.TextSize = 18
 TextLabel_2.TextWrapped = true
+TextLabel_2.TextTransparency = 1 -- Initially transparent
 
 -- Function to tween transparency
-local function showDisableLibrary()
+local function showLibrary()
     ScreenGui.Enabled = true
     
+    -- Fade in the Frame
     local tweenInfo = TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
-    local goal = {BackgroundTransparency = 0}
-    local tween = TweenService:Create(Frame, tweenInfo, goal)
+    local goalFrame = {BackgroundTransparency = 0}
+    local tweenFrame = TweenService:Create(Frame, tweenInfo, goalFrame)
+    tweenFrame:Play()
     
-    tween:Play()
-    task.wait(2)
+    -- Fade in the TextLabels
+    local goalText = {TextTransparency = 0}
+    local tweenText1 = TweenService:Create(TextLabel, tweenInfo, goalText)
+    local tweenText2 = TweenService:Create(TextLabel_2, tweenInfo, goalText)
     
-    local hideTween = TweenService:Create(Frame, tweenInfo, {BackgroundTransparency = 1})
-    hideTween:Play()
+    tweenText1:Play()
+    tweenText2:Play()
+    
+    task.wait(1)
+    
+    -- Fade out the Frame
+    local hideTweenFrame = TweenService:Create(Frame, tweenInfo, {BackgroundTransparency = 1})
+    hideTweenFrame:Play()
+
+    -- Fade out the TextLabels
+    local hideTweenText1 = TweenService:Create(TextLabel, tweenInfo, {TextTransparency = 1})
+    local hideTweenText2 = TweenService:Create(TextLabel_2, tweenInfo, {TextTransparency = 1})
+    
+    hideTweenText1:Play()
+    hideTweenText2:Play()
+    
     task.wait(0.5)
     
+    -- Disable ScreenGui
     ScreenGui.Enabled = false
 end
 
